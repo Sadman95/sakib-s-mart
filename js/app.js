@@ -13,7 +13,7 @@ const showProducts = (products) => {
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
-    div.classList.add("product");
+    div.classList.add("single-product");
     div.innerHTML = `<div class="single-product">
       <div>
     <img class="product-image" src=${image}></img>
@@ -22,20 +22,30 @@ const showProducts = (products) => {
       <p>Category: ${product.category}</p>
       <p>Rating: ${product.rating["rate"]}  Reviews: ${product.rating["count"]}</p>
       <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+      <button onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button></div>
+      <div id="detail"></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
 let count = 0;
-const addToCart = (id, price) => {
+// add to cart:
+const addToCart = (price) => {
   count = count + 1;
   updatePrice("price", price);
   updateTaxAndCharge();
   document.getElementById("total-Products").innerText = count;
 };
-
+// show details of a product:
+const loadDetails = async (id) =>{
+  const url = `https://fakestoreapi.com/products/${id}`;
+  const res = await fetch(url);
+  const detail = await res.json();
+  showDetail(detail);
+  // console.log('details btn clicked');
+}
+// get input value:
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);

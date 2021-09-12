@@ -38,6 +38,7 @@ body {
 .single-product {
   padding: 10px;
   transition: 0.6s;
+  border: 1px solid transparent;
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;

@@ -23,8 +23,8 @@ const showProducts = (products) => {
       <p>Rating: ${product.rating["rate"]}  Reviews: ${product.rating["count"]}</p>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button></div>
-      <div id="detail"></div>
+      <button data-bs-toggle="modal" data-bs-target="#detail-modal" onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button></div>
+      
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -39,11 +39,30 @@ const addToCart = (price) => {
 };
 // show details of a product:
 const loadDetails = async (id) =>{
+  document.getElementById('details').textContent = '';
   const url = `https://fakestoreapi.com/products/${id}`;
   const res = await fetch(url);
-  const detail = await res.json();
-  showDetail(detail);
+  const data = await res.json();
+  showDetail(data);
   // console.log('details btn clicked');
+}
+const showDetail = detail =>{
+console.log(detail);
+  const singleDetails = document.getElementById('details');
+  const div = document.createElement('div');
+  div.classList.add('card');
+  div.innerHTML = 
+      `
+          <img src="${detail.image}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title style="font-weight: bold">${detail.category}</h5>
+            <p class="card-text">${detail.description}</p>
+            <a href="#" class="btn btn-primary">Buy Now</a>
+          </div>
+        
+      `;
+      singleDetails.appendChild(div);
+  
 }
 // get input value:
 const getInputValue = (id) => {

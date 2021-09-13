@@ -16,14 +16,16 @@ const showProducts = (products) => {
     div.innerHTML = `
       <div class="single-product">
         <div>
-          <img class="product-image" src=${image}></img>
+          <div>
+            <img class="product-image" src=${image}></img>
+          </div>
+          <h3 class="fs-5 fw-bold text-secondary">${product.title}</h3>
+          <p><span class="fw-bold">Category:</span> ${product.category}</p>
+          <p><span class="fw-bold">Rating:</span> ${product.rating["rate"]}  <span class="fw-bold">Reviews:</span> ${product.rating["count"]}</p>
+          <h2 class="text-warning">Price: $ ${product.price}</h2>
+          <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+          <button data-bs-toggle="modal" data-bs-target="#detail-modal" onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button>
         </div>
-        <h3 class="fs-5 fw-bold text-secondary">${product.title}</h3>
-        <p><span class="fw-bold">Category:</span> ${product.category}</p>
-        <p><span class="fw-bold">Rating:</span> ${product.rating["rate"]}  <span class="fw-bold">Reviews:</span> ${product.rating["count"]}</p>
-        <h2 class="text-warning">Price: $ ${product.price}</h2>
-        <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        <button data-bs-toggle="modal" data-bs-target="#detail-modal" onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button>
       </div>
       `;
     document.getElementById("all-products").appendChild(div);
@@ -52,6 +54,7 @@ console.log(detail);
   singleDetails.style.display = 'table';
   const div = document.createElement('div');
   div.classList.add('card');
+  div.classList.add('py-2');
   div.innerHTML = 
       `
           <img src="${detail.image}" class="card-img-top" alt="...">

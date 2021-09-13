@@ -14,12 +14,15 @@ body {
   justify-content: center;
 }
 .single-product {
-  padding: 10px;
+  padding: 8px;
   transition: 0.6s;
   border: 1px solid rgb(104, 170, 246);
   border-radius: 10px;
-  min-height: 130vh;
+  min-height: 80vh;
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .single-product:hover {
   box-shadow: 0px 0px 7px gray;

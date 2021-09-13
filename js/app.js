@@ -6,7 +6,6 @@ const loadProducts = async () => {
   showProducts(data);
 };
 
-
 // show all product in UI 
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);

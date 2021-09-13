@@ -13,18 +13,18 @@ const showProducts = (products) => {
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
-    div.classList.add("single-product");
-    div.innerHTML = `<div class="single-product">
-      <div>
-    <img class="product-image" src=${image}></img>
+    div.innerHTML = `
+      <div class="single-product">
+        <div>
+          <img class="product-image" src=${image}></img>
+        </div>
+        <h3>${product.title}</h3>
+        <p><span class="fw-bold">Category:</span> ${product.category}</p>
+        <p><span class="fw-bold">Rating:</span> ${product.rating["rate"]}  <span class="fw-bold">Reviews:</span> ${product.rating["count"]}</p>
+        <h2 class="text-warning">Price: $ ${product.price}</h2>
+        <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+        <button data-bs-toggle="modal" data-bs-target="#detail-modal" onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button>
       </div>
-      <h3>${product.title}</h3>
-      <p>Category: ${product.category}</p>
-      <p>Rating: ${product.rating["rate"]}  Reviews: ${product.rating["count"]}</p>
-      <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button data-bs-toggle="modal" data-bs-target="#detail-modal" onclick="loadDetails(${product.id})" id="details-btn" class="btn btn-danger">Details</button></div>
-      
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -109,6 +109,6 @@ const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
 loadProducts();

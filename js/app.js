@@ -1,4 +1,4 @@
-
+// API load:
 const loadProducts = async () => {
   const url = 'https://fakestoreapi.com/products';
   const res = await fetch(url);
@@ -18,7 +18,7 @@ const showProducts = (products) => {
         <div>
           <img class="product-image" src=${image}></img>
         </div>
-        <h3>${product.title}</h3>
+        <h3 class="fs-5 fw-bold text-secondary">${product.title}</h3>
         <p><span class="fw-bold">Category:</span> ${product.category}</p>
         <p><span class="fw-bold">Rating:</span> ${product.rating["rate"]}  <span class="fw-bold">Reviews:</span> ${product.rating["count"]}</p>
         <h2 class="text-warning">Price: $ ${product.price}</h2>
@@ -111,4 +111,6 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+// API load called:
 loadProducts();

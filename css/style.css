@@ -46,8 +46,20 @@ body {
   border: 1px solid cyan;
 }
 #details{
-  width: 50%;
-  margin: auto;
+  display: none;
+  width: 30%;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: 0px 0px 10px 0px dimgray;
+  border-radius: 10px;
+  padding: 10px;
+}
+#details img{
+  width: 30%;
+}
+#details h5{
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .product-image {
   width: 150px;
@@ -59,8 +71,9 @@ body {
   padding: 10px;
   box-shadow: 10px 10px 20px gray;
   border-radius: 5px;
-  margin-right: 30px;
   position: fixed;
+  right: 20px;
+  top: 50px;
 }
 .cart-main {
   padding-right: 30px;

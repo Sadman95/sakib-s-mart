@@ -49,13 +49,14 @@ const loadDetails = async (id) =>{
 const showDetail = detail =>{
 console.log(detail);
   const singleDetails = document.getElementById('details');
+  singleDetails.style.display = 'table';
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = 
       `
           <img src="${detail.image}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title style="font-weight: bold">${detail.category}</h5>
+            <h5 class="card-title">${detail.category}</h5>
             <p class="card-text">${detail.description}</p>
             <a href="#" class="btn btn-primary">Buy Now</a>
           </div>
